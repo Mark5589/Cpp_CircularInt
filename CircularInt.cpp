@@ -23,7 +23,7 @@ CircularInt::CircularInt(int lower, int upper){
 
 }
 
-CircularInt CircularInt::operator-=(int val) {
+CircularInt CircularInt::operator-=(int val) { // CHECKED - WORKING FINE
     int ans;
     if(val >= this->get_current()){
         val = (val - this->get_current()) % this->get_range();
@@ -38,7 +38,7 @@ CircularInt CircularInt::operator-=(int val) {
     this->set_current(ans);
 }
 
-CircularInt& CircularInt::operator-() {
+CircularInt& CircularInt::operator-() {  // CHECKED - WORKING FINE
     int ans = this->get_upper_bound() - this->get_current();
     this->set_current(ans);
     return *this;
@@ -52,18 +52,8 @@ CircularInt& CircularInt::operator-(int start_point) { // 2 hours before 1 == 1 
     return *this;
 }
 
-// ### BUG IS HERE , COMPILER MESSAGE : " error: overloaded 'operator-' must be a unary or binary operator (has 3 parameters) "
-//CircularInt CircularInt::operator-(int starting, CircularInt currentOne) {
-//    CircularInt ans{currentOne.get_low_bound(), currentOne.get_upper_bound()};
-//    int tmp = currentOne.get_current();
-//    ans.set_current(starting);
-//    ans -= tmp;
-//    return ans;
-//
-//
-//}
 
-CircularInt &CircularInt::operator*=(int val) {
+CircularInt &CircularInt::operator*=(int val) { // CHECKED - WORKING FINE
 
 
     int tmp= val * this->get_current();
@@ -72,6 +62,42 @@ CircularInt &CircularInt::operator*=(int val) {
     return *this;
 }
 
+CircularInt &CircularInt::operator+(CircularInt other) { // CHECKED - WORKING FINE
+    (*this).operator+=(other.get_current());
+    return (*this);
+}
 
+CircularInt operator-(int num, CircularInt  &other) { // 11 == 1- hour(2) because 11 is 2 hours before 1 // CHECKED - WORKING FINE
+   int ans;
+    CircularInt result{other.get_low_bound(), other.get_upper_bound()};
+    result.set_current(num);
 
+    result -= other.get_current();
+    return result;
+
+}
+
+// ####################### CODE BREAKER (Programmer Notes) #####################################
+/*COPY - TMP - TESTING
+ * CircularInt operator-(int num, CircularInt const &other) {
+   int ans;
+    CircularInt result(other);
+    ans = num - result.get_current();
+    result.set_current(ans);
+    return result;
+
+}
+ */
+
+/*/
+ * //    CircularInt operator+=(int val){ // Non Reference (probably wrong way)
+//        int total_n = this->get_current() + val;
+//        int mod_range = this->get_upper_bound() - this->get_low_bound() +1;
+//        int ans = total_n % mod_range;
+//        this->set_current(ans);
+//
+//    }
+ */
+
+// ############################################################
 

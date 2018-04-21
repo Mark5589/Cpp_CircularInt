@@ -37,13 +37,17 @@ public:
         return os;
     }
 
-    CircularInt operator+=(int val){
-        int total_n = this->get_current() + val;
-        int mod_range = this->get_upper_bound() - this->get_low_bound() +1;
+
+
+    CircularInt&operator+=(int val){
+        int total_n = (*this).get_current() + val;
+        int mod_range = this->get_range();
         int ans = total_n % mod_range;
         this->set_current(ans);
+        return (*this);
 
     }
+
 
 //    CircularInt& operator++(){ //prefix operator
 //        int ans = this->get_current() + 1;
@@ -56,18 +60,23 @@ public:
 //        ++(*this);
 //        return result;
 //    }
-    CircularInt operator++(int){
+    CircularInt operator++(int){ //Fine Working on simple operation
         this->operator+=(1);
         return *this;
     }
 
-    CircularInt operator-=(int);
-    CircularInt& operator-();
-    CircularInt& operator-(int);
+    CircularInt operator-=(int); // CHECKED - WORKING FINE
+    CircularInt& operator-(); // CHECKED - WORKING FINE
+    CircularInt& operator-(int); // CHECKED - WORKING FINE
 //    CircularInt operator-(int,CircularInt); //### BUG
-    CircularInt&operator*=(int);
+    CircularInt&operator*=(int); // CHECKED - WORKING FINE
+    CircularInt&operator+(CircularInt); // CHECKED - WORKING FINE
+
+
 
 };
+//This is non-member function because its have to deal with 3 members on unary/binary operator (compiling error)
+CircularInt operator-(int num, CircularInt  &other); //num-CircularInt // CHECKED - WORKING FINE //
 
 
 #endif //CIRCULAR_INT_CIRCULARINT_H
