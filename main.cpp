@@ -54,9 +54,8 @@ int main() {
     hour.set_current(2);
 	hour = 1 - hour; cout << hour << endl;// 11  (2 hours before 1)
     hour*=2;
-    cout << hour << endl;
-    hour /= 2;
-    cout << hour << endl;
+    CircularInt c = hour/2;
+    cout << hour/2 << endl;
 
 //	try {
 //		cout << hour/3;

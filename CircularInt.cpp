@@ -74,6 +74,12 @@ CircularInt CircularInt::operator/=(int val) {
     return result;
 }
 
+CircularInt& CircularInt::operator/(int num) {
+    int total = num * this->get_current();
+    *this -= total;
+    return (*this);
+}
+
 CircularInt operator-(int num, CircularInt  &other) { // 11 == 1- hour(2) because 11 is 2 hours before 1 // CHECKED - WORKING FINE
    int ans;
     CircularInt result{other.get_low_bound(), other.get_upper_bound()};
@@ -83,6 +89,8 @@ CircularInt operator-(int num, CircularInt  &other) { // 11 == 1- hour(2) becaus
     return result;
 
 }
+
+
 
 // ####################### CODE BREAKER (Programmer Notes) #####################################
 /*COPY - TMP - TESTING

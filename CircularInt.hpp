@@ -62,6 +62,8 @@ public:
     CircularInt&operator*=(int); // CHECKED - WORKING FINE
     CircularInt&operator+(CircularInt); // CHECKED - WORKING FINE
     CircularInt operator/=(int);
+    CircularInt& operator/(int num);
+
 
 
 };
