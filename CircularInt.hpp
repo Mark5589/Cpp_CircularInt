@@ -49,17 +49,7 @@ public:
     }
 
 
-//    CircularInt& operator++(){ //prefix operator
-//        int ans = this->get_current() + 1;
-//        this->set_current(ans);
-//        return *this;
-//    }
-//
-//    CircularInt operator++(int){// postfix operator
-//        CircularInt result(*this);
-//        ++(*this);
-//        return result;
-//    }
+
     CircularInt operator++(int){ //Fine Working on simple operation
         this->operator+=(1);
         return *this;
@@ -71,7 +61,7 @@ public:
 //    CircularInt operator-(int,CircularInt); //### BUG
     CircularInt&operator*=(int); // CHECKED - WORKING FINE
     CircularInt&operator+(CircularInt); // CHECKED - WORKING FINE
-
+    CircularInt operator/=(int);
 
 
 };

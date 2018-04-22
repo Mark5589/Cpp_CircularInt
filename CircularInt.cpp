@@ -67,6 +67,13 @@ CircularInt &CircularInt::operator+(CircularInt other) { // CHECKED - WORKING FI
     return (*this);
 }
 
+CircularInt CircularInt::operator/=(int val) {
+    CircularInt result(*this);
+    int total = this->get_current() * val;
+    result -= total;
+    return result;
+}
+
 CircularInt operator-(int num, CircularInt  &other) { // 11 == 1- hour(2) because 11 is 2 hours before 1 // CHECKED - WORKING FINE
    int ans;
     CircularInt result{other.get_low_bound(), other.get_upper_bound()};
@@ -96,6 +103,21 @@ CircularInt operator-(int num, CircularInt  &other) { // 11 == 1- hour(2) becaus
 //        int ans = total_n % mod_range;
 //        this->set_current(ans);
 //
+//    }
+ */
+
+
+/*/
+ * //    CircularInt& operator++(){ //prefix operator
+//        int ans = this->get_current() + 1;
+//        this->set_current(ans);
+//        return *this;
+//    }
+//
+//    CircularInt operator++(int){// postfix operator
+//        CircularInt result(*this);
+//        ++(*this);
+//        return result;
 //    }
  */
 

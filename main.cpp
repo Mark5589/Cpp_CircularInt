@@ -55,6 +55,8 @@ int main() {
 	hour = 1 - hour; cout << hour << endl;// 11  (2 hours before 1)
     hour*=2;
     cout << hour << endl;
+    hour /= 2;
+    cout << hour << endl;
 
 //	try {
 //		cout << hour/3;
