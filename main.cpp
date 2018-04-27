@@ -64,14 +64,19 @@ int main() {
     cout << "hour is :: " << hour << endl;
     cout <<"|c=" << c << "|hour= "<< hour <<" | c/ hour:" <<  c/hour <<" c="<<c << endl;
     cout << c*2 << endl;
-    hour =1;
-    c=1;
+    hour =1; cout << hour << endl;
+    c=1; cout<< c << endl;
 
 
-    if(hour==c) cout << "equal" << endl;
-    else cout << "not equal"<<endl;
+    if(hour!=c) cout << "not equal" << endl;
+    else cout << " equal"<<endl;
+    if(hour <= c)  cout << "hour <= c" << endl;
+    else  cout << "hour > c" << endl;
+
 
     hour = 18; cout << hour << endl;
+    cout << endl;
+    cin >> hour; cout << "hour after input :"<< hour<<endl;
 
 
 

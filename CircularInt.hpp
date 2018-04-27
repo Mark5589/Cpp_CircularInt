@@ -38,6 +38,15 @@ public:
         return os;
     }
 
+    friend std::istream& operator>>(std::istream &is ,CircularInt& s ){
+        int i;
+        is >> i;
+//        s.set_current(i);
+        s =i;
+        return is;
+    }
+
+
 
 
     CircularInt&operator+=(int val){
@@ -61,11 +70,11 @@ public:
     CircularInt& operator-(int); // CHECKED - WORKING FINE
     CircularInt&operator-(const CircularInt&);
 //    CircularInt operator-(int,CircularInt); //### BUG
-    CircularInt&operator*=(int); // CHECKED - WORKING FINE
     CircularInt&operator+(CircularInt); // CHECKED - WORKING FINE
     CircularInt operator/=(int);
     CircularInt& operator/(int num);
     CircularInt&operator/(const CircularInt&other);
+    CircularInt&operator*=(int); // CHECKED - WORKING FINE
     CircularInt&operator*(int n);
     CircularInt&operator*(const CircularInt&other);
     CircularInt&operator=(int n);
@@ -77,6 +86,11 @@ public:
 //This is non-member function because its have to deal with 3 members on unary/binary operator (compiling error)
 CircularInt operator-(int num, CircularInt  &other); //num-CircularInt // CHECKED - WORKING FINE //
  bool operator==( CircularInt &current ,  CircularInt&other);
+ bool operator!=( CircularInt &current ,  CircularInt&other);
+ bool operator<( CircularInt &current ,  CircularInt&other);
+ bool operator>( CircularInt &current ,  CircularInt&other);
+ bool operator<=( CircularInt &current ,  CircularInt&other);
+ bool operator>=( CircularInt &current ,  CircularInt&other);
 
 
 #endif //CIRCULAR_INT_CIRCULARINT_H

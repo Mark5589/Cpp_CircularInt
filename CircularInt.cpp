@@ -132,6 +132,32 @@ CircularInt operator-(int num, CircularInt  &other) { // 11 == 1- hour(2) becaus
     return false;
 }
 
+bool operator!=(CircularInt &current, CircularInt &other) {
+    return !(current == other);
+}
+
+bool operator<(CircularInt &current, CircularInt &other) {
+    if(current.get_low_bound() == other.get_low_bound() && current.get_upper_bound() == other.get_upper_bound() &&
+            current.get_current() < other.get_current())return true;
+
+    return false;
+}
+
+bool operator>(CircularInt &current, CircularInt &other) {
+    if(current < other)return false;
+    return true;
+}
+
+bool operator<=(CircularInt &current, CircularInt &other) {
+    if(current < other || current == other)return true;
+    return false;
+}
+
+bool operator>=(CircularInt &current, CircularInt &other) {
+    if(current > other || current == other) return true;
+    return false;
+}
+
 
 // ####################### CODE BREAKER (Programmer Notes) #####################################
 /*COPY - TMP - TESTING
