@@ -44,19 +44,28 @@ using namespace std;
 
 int main() {
     CircularInt hour {1, 12};// <hour is an integer between 1 and 12, like an hour on the clock>
+
 //    test2();
 //    test1();
     cout << hour << endl;                     // 1
 	hour += 4;  cout << hour << endl;         // 5
-	(hour += 2)++;  cout << hour << endl;     // 8
+	(hour += 2)++;  cout << hour << endl;// 8
+    cout << hour << endl;
 	hour += 18;   cout << hour << endl;       // 2   (18 hours after 8)
 	cout << -hour << endl;                    // 10  (2 hours before midnight)
     hour.set_current(2);
 	hour = 1 - hour; cout << hour << endl;// 11  (2 hours before 1)
-    hour*=2;
-    cout << "1|hour= "<< hour <<endl;
+//    hour*=2;
+//    cout << "1|hour= "<< hour <<endl;
+    CircularInt c{1,12};
+    c.set_current(3);
+    cout << c << endl;
+    cout << hour+c << endl;
+    cout << hour-c << endl;
+    cout << hour/2<< endl;
+    cout << hour * 2 << endl;
 
-    CircularInt c = hour/2;
+//    CircularInt c = hour/2;
     cout << "2|hour= "<< hour <<endl;
     cout << "hour/2 :"<<hour/2 << endl;
     cout <<"|c=" << c << "|hour= "<< hour <<" | c - hour: " <<  c - hour << endl;

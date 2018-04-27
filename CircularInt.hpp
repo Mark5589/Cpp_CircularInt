@@ -22,10 +22,10 @@ class CircularInt {
 public:
     CircularInt(int , int );
     CircularInt(const CircularInt& other);
-    int get_low_bound(){return low_bound;}
-    int get_upper_bound(){ return  upper_bound;}
-    int get_current(){return current_num;}
-    int set_current(int val){this->current_num = val;}
+    int get_low_bound() const {return low_bound;}
+    int get_upper_bound() const{ return  upper_bound;}
+    int get_current() const {return current_num;}
+    void set_current(int val){this->current_num = val;}
     std::string to_string(){return std::to_string(get_current());}
     int get_range(){return get_upper_bound()-get_low_bound()+1;}
 
@@ -33,64 +33,63 @@ public:
     //operator overloading:
 
 
-    friend std::ostream& operator<<(std::ostream& os,  CircularInt& s){
-        os<<std::to_string(s.get_current()) ;
-        return os;
-    }
+//    friend  std::ostream& operator<<(std::ostream& os,  CircularInt& s){
+//        os<<std::to_string(s.get_current()) ;
+//        return os;
+//    }
 
     friend std::istream& operator>>(std::istream &is ,CircularInt& s ){
         int i;
         is >> i;
-//        s.set_current(i);
         s =i;
         return is;
     }
 
+    friend std::ostream &operator<<(std::ostream &os, CircularInt const &n);
 
 
 
-    CircularInt&operator+=(int val){
-        int total_n = (*this).get_current() + val;
-        int mod_range = this->get_range();
-        int ans = total_n % mod_range;
-        this->set_current(ans);
-        return (*this);
-
-    }
+    CircularInt&operator+=(int val);
 
 
 
-    CircularInt operator++(int){ //Fine Working on simple operation
-        this->operator+=(1);
-        return *this;
-    }
+    CircularInt& operator++(); // prefix
+    CircularInt operator++(int); // postfix
 
-    CircularInt operator-=(int); // CHECKED - WORKING FINE
-    CircularInt& operator-(); // CHECKED - WORKING FINE
-    CircularInt& operator-(int); // CHECKED - WORKING FINE
-    CircularInt&operator-(const CircularInt&);
-//    CircularInt operator-(int,CircularInt); //### BUG
-    CircularInt&operator+(CircularInt); // CHECKED - WORKING FINE
-    CircularInt operator/=(int);
-    CircularInt& operator/(int num);
-    CircularInt&operator/(const CircularInt&other);
-    CircularInt&operator*=(int); // CHECKED - WORKING FINE
-    CircularInt&operator*(int n);
-    CircularInt&operator*(const CircularInt&other);
+    CircularInt operator/(int num);
+    CircularInt& operator-();
+    CircularInt operator*(int n);
+
+
+    CircularInt operator-=(int);
+    CircularInt& operator/=(int);
+    CircularInt&operator*=(int);
     CircularInt&operator=(int n);
 
-
+    bool operator==(int val);
+    bool operator!=(int val);
+    bool operator<( int val);
+    bool operator>( int val);
+    bool operator<=(int val);
+    bool operator>=(int val);
 
 
 };
 //This is non-member function because its have to deal with 3 members on unary/binary operator (compiling error)
 CircularInt operator-(int num, CircularInt  &other); //num-CircularInt // CHECKED - WORKING FINE //
+CircularInt operator+(const CircularInt& a ,const CircularInt&b); // CHECKED - WORKING FINE
+CircularInt operator-(const CircularInt& a ,const CircularInt&b);
+CircularInt operator/(const CircularInt& a ,const CircularInt&b);
+CircularInt operator*(const CircularInt& a ,const CircularInt&b);
+
+
  bool operator==( CircularInt &current ,  CircularInt&other);
  bool operator!=( CircularInt &current ,  CircularInt&other);
  bool operator<( CircularInt &current ,  CircularInt&other);
  bool operator>( CircularInt &current ,  CircularInt&other);
  bool operator<=( CircularInt &current ,  CircularInt&other);
  bool operator>=( CircularInt &current ,  CircularInt&other);
+
 
 
 #endif //CIRCULAR_INT_CIRCULARINT_H

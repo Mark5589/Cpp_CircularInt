@@ -43,14 +43,10 @@ CircularInt& CircularInt::operator-() {  // CHECKED - WORKING FINE
     this->set_current(ans);
     return *this;
 
+
+
 }
 
-CircularInt& CircularInt::operator-(int start_point) { // 2 hours before 1 == 1 - hour
-    int old_current = this->get_current();
-    this->set_current(start_point);
-    *this -= old_current;
-    return *this;
-}
 
 
 CircularInt &CircularInt::operator*=(int val) { // CHECKED - WORKING FINE
@@ -62,43 +58,41 @@ CircularInt &CircularInt::operator*=(int val) { // CHECKED - WORKING FINE
     return *this;
 }
 
-CircularInt &CircularInt::operator+(CircularInt other) { // CHECKED - WORKING FINE
-    (*this).operator+=(other.get_current());
+//CircularInt &CircularInt::operator+(CircularInt other) { // CHECKED - WORKING FINE
+//    (*this).operator+=(other.get_current());
+//    return (*this);
+//}
+
+CircularInt& CircularInt::operator/=(int val) {
+    int total = (*this).get_current() * val;
+    (*this) -= total;
     return (*this);
 }
 
-CircularInt CircularInt::operator/=(int val) {
-    CircularInt result(*this);
-    int total = this->get_current() * val;
-    result -= total;
-    return result;
-}
-
-CircularInt& CircularInt::operator/(int num) {
+CircularInt CircularInt::operator/(int num) {
+    CircularInt ans(*this);
     int total = num * this->get_current();
-    *this -= total;
-    return (*this);
+    ans -= total;
+    return ans;
 }
 
 CircularInt::CircularInt(const CircularInt &other): low_bound(other.low_bound), upper_bound(other.upper_bound), current_num(other.current_num) {}
 
-CircularInt &CircularInt::operator-(const CircularInt &other) {
-    (*this)-=other.current_num;
-    return (*this);
+//CircularInt CircularInt::operator-(const CircularInt &other) {
+////    (*this)-=other.current_num;
+////    return (*this);
+//    CircularInt ans(*this);
+//    ans -= other.current_num;
+//    return ans;
+//}
+
+
+
+CircularInt CircularInt::operator*(int n) {
+    CircularInt ans(*this);
+    return ans*=n;
 }
 
-CircularInt &CircularInt::operator/(const CircularInt &other) {
-    (*this) /= other.current_num;
-    return (*this);
-}
-
-CircularInt &CircularInt::operator*(int n) {
-    return (*this)*=n;
-}
-
-CircularInt &CircularInt::operator*(const CircularInt &other) {
-    return (*this) *= other.current_num;
-}
 
 CircularInt &CircularInt::operator=(int n) {
     if(n > (*this).get_range()){
@@ -111,6 +105,53 @@ CircularInt &CircularInt::operator=(int n) {
     return (*this);
 }
 
+CircularInt CircularInt::operator++(int) { // postfix
+    CircularInt ans(*this);
+    ++(*this);
+    return ans;
+}
+
+CircularInt &CircularInt::operator++() { // prefix
+    (*this)+=1;
+    return (*this);
+}
+
+CircularInt &CircularInt::operator+=(int val) {
+    int total_n = (*this).get_current() + val;
+    int mod_range = this->get_range();
+    int ans = total_n % mod_range;
+    this->set_current(ans);
+    return (*this);
+}
+
+std::ostream &operator<<(std::ostream &os, const CircularInt &n) {
+    int ans = n.get_current();
+    return os << std::to_string(ans);
+}
+
+bool CircularInt::operator==(int val) {
+    return (*this) == val;
+}
+
+bool CircularInt::operator!=(int val) {
+    return (*this) != val;
+}
+
+bool CircularInt::operator<(int val) {
+    return (*this) < val;
+}
+
+bool CircularInt::operator>(int val) {
+    return (*this) > val;
+}
+
+bool CircularInt::operator<=(int val) {
+    return ((*this)==val || (*this) < val);
+}
+
+bool CircularInt::operator>=(int val) {
+    return ((*this)==val || (*this) >val);;
+}
 
 
 CircularInt operator-(int num, CircularInt  &other) { // 11 == 1- hour(2) because 11 is 2 hours before 1 // CHECKED - WORKING FINE
@@ -158,6 +199,32 @@ bool operator>=(CircularInt &current, CircularInt &other) {
     return false;
 }
 
+CircularInt operator-(const CircularInt &a, const CircularInt &b) {
+    CircularInt ans(a);
+    ans-=b.get_current();
+    return ans;
+}
+
+CircularInt operator+(const CircularInt &a, const CircularInt &b) {
+    CircularInt ans(a);
+    ans+=b.get_current();
+    return ans;
+}
+
+CircularInt operator/(const CircularInt &a, const CircularInt &b) {
+    CircularInt ans(a);
+    ans /= b.get_current();
+    return ans;
+}
+
+CircularInt operator*(const CircularInt &a, const CircularInt &b) {
+    CircularInt ans(a);
+    ans *= b.get_current();
+    return ans;
+}
+
+
+
 
 // ####################### CODE BREAKER (Programmer Notes) #####################################
 /*COPY - TMP - TESTING
@@ -196,5 +263,12 @@ bool operator>=(CircularInt &current, CircularInt &other) {
 //    }
  */
 
-// ############################################################
+// ###################GARBAGE COD#########################################
+
+//CircularInt& CircularInt::operator-(int start_point) { // 2 hours before 1 == 1 - hour
+//    int old_current = this->get_current();
+//    this->set_current(start_point);
+//    *this -= old_current;
+//    return *this;
+//}
 
