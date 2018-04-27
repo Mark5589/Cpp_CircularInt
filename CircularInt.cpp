@@ -80,6 +80,39 @@ CircularInt& CircularInt::operator/(int num) {
     return (*this);
 }
 
+CircularInt::CircularInt(const CircularInt &other): low_bound(other.low_bound), upper_bound(other.upper_bound), current_num(other.current_num) {}
+
+CircularInt &CircularInt::operator-(const CircularInt &other) {
+    (*this)-=other.current_num;
+    return (*this);
+}
+
+CircularInt &CircularInt::operator/(const CircularInt &other) {
+    (*this) /= other.current_num;
+    return (*this);
+}
+
+CircularInt &CircularInt::operator*(int n) {
+    return (*this)*=n;
+}
+
+CircularInt &CircularInt::operator*(const CircularInt &other) {
+    return (*this) *= other.current_num;
+}
+
+CircularInt &CircularInt::operator=(int n) {
+    if(n > (*this).get_range()){
+        (*this).set_current((*this).get_low_bound());
+        (*this) += n;
+    }
+    else{
+        (*this).current_num = n;
+    }
+    return (*this);
+}
+
+
+
 CircularInt operator-(int num, CircularInt  &other) { // 11 == 1- hour(2) because 11 is 2 hours before 1 // CHECKED - WORKING FINE
    int ans;
     CircularInt result{other.get_low_bound(), other.get_upper_bound()};
@@ -90,6 +123,14 @@ CircularInt operator-(int num, CircularInt  &other) { // 11 == 1- hour(2) becaus
 
 }
 
+ bool operator==( CircularInt &current,  CircularInt &other) {
+    if((current).get_current() == other.get_current() &&
+       (current).get_upper_bound() == other.get_upper_bound()&&
+       (current).get_low_bound() == other.get_low_bound())
+        return true;
+
+    return false;
+}
 
 
 // ####################### CODE BREAKER (Programmer Notes) #####################################

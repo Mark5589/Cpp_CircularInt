@@ -54,8 +54,26 @@ int main() {
     hour.set_current(2);
 	hour = 1 - hour; cout << hour << endl;// 11  (2 hours before 1)
     hour*=2;
+    cout << "1|hour= "<< hour <<endl;
+
     CircularInt c = hour/2;
-    cout << hour/2 << endl;
+    cout << "2|hour= "<< hour <<endl;
+    cout << "hour/2 :"<<hour/2 << endl;
+    cout <<"|c=" << c << "|hour= "<< hour <<" | c - hour: " <<  c - hour << endl;
+    hour =2;
+    cout << "hour is :: " << hour << endl;
+    cout <<"|c=" << c << "|hour= "<< hour <<" | c/ hour:" <<  c/hour <<" c="<<c << endl;
+    cout << c*2 << endl;
+    hour =1;
+    c=1;
+
+
+    if(hour==c) cout << "equal" << endl;
+    else cout << "not equal"<<endl;
+
+    hour = 18; cout << hour << endl;
+
+
 
 //	try {
 //		cout << hour/3;

@@ -21,6 +21,7 @@ class CircularInt {
 
 public:
     CircularInt(int , int );
+    CircularInt(const CircularInt& other);
     int get_low_bound(){return low_bound;}
     int get_upper_bound(){ return  upper_bound;}
     int get_current(){return current_num;}
@@ -58,17 +59,24 @@ public:
     CircularInt operator-=(int); // CHECKED - WORKING FINE
     CircularInt& operator-(); // CHECKED - WORKING FINE
     CircularInt& operator-(int); // CHECKED - WORKING FINE
+    CircularInt&operator-(const CircularInt&);
 //    CircularInt operator-(int,CircularInt); //### BUG
     CircularInt&operator*=(int); // CHECKED - WORKING FINE
     CircularInt&operator+(CircularInt); // CHECKED - WORKING FINE
     CircularInt operator/=(int);
     CircularInt& operator/(int num);
+    CircularInt&operator/(const CircularInt&other);
+    CircularInt&operator*(int n);
+    CircularInt&operator*(const CircularInt&other);
+    CircularInt&operator=(int n);
+
 
 
 
 };
 //This is non-member function because its have to deal with 3 members on unary/binary operator (compiling error)
 CircularInt operator-(int num, CircularInt  &other); //num-CircularInt // CHECKED - WORKING FINE //
+ bool operator==( CircularInt &current ,  CircularInt&other);
 
 
 #endif //CIRCULAR_INT_CIRCULARINT_H
