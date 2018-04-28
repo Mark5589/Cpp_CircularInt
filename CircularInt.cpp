@@ -38,10 +38,11 @@ CircularInt CircularInt::operator-=(int val) { // CHECKED - WORKING FINE
     this->set_current(ans);
 }
 
-CircularInt& CircularInt::operator-() {  // CHECKED - WORKING FINE
+CircularInt CircularInt::operator-() {  // CHECKED - WORKING FINE
+    CircularInt res(*this);
     int ans = this->get_upper_bound() - this->get_current();
-    this->set_current(ans);
-    return *this;
+    res.set_current(ans);
+    return res;
 
 
 
@@ -117,11 +118,19 @@ CircularInt &CircularInt::operator++() { // prefix
 }
 
 CircularInt &CircularInt::operator+=(int val) {
-    int total_n = (*this).get_current() + val;
-    int mod_range = this->get_range();
-    int ans = total_n % mod_range;
-    this->set_current(ans);
-    return (*this);
+    ///// Version 1.0
+//    int total_n = (*this).get_current() + val;
+//    int mod_range = this->get_range();
+//    int ans = total_n % mod_range;
+//    this->set_current(ans);
+//    return (*this);
+
+    ///// Version 1.1
+    int modNum = val % (upper_bound - low_bound + 1);
+    current_num += modNum;
+    if (current_num > upper_bound)
+        current_num = low_bound + (current_num - upper_bound) - 1;
+    return *this;
 }
 
 std::ostream &operator<<(std::ostream &os, const CircularInt &n) {
@@ -130,37 +139,58 @@ std::ostream &operator<<(std::ostream &os, const CircularInt &n) {
 }
 
 bool CircularInt::operator==(int val) {
-    return (*this) == val;
+    return (this->get_current()) == val;
 }
 
 bool CircularInt::operator!=(int val) {
-    return (*this) != val;
+    return (this->get_current()) != val;
 }
 
 bool CircularInt::operator<(int val) {
-    return (*this) < val;
+    return (this->get_current()) < val;
 }
 
 bool CircularInt::operator>(int val) {
-    return (*this) > val;
+    return (this->get_current()) > val;
 }
 
 bool CircularInt::operator<=(int val) {
-    return ((*this)==val || (*this) < val);
+    return (this->get_current())==val || (this->get_current()) < val;
 }
 
 bool CircularInt::operator>=(int val) {
-    return ((*this)==val || (*this) >val);;
+    return (this->get_current())==val || (this->get_current()) >val;
+}
+
+CircularInt CircularInt::operator-(int n) {
+    CircularInt ans(*this);
+    return ans-= n;
+}
+
+CircularInt CircularInt::operator+(int n) {
+    CircularInt ans(*this);
+    return ans += n;
+}
+
+CircularInt::CircularInt(int low, int high, int curr) {
+    this->low_bound = low;
+    this->upper_bound = high;
+    this->current_num = curr;
 }
 
 
 CircularInt operator-(int num, CircularInt  &other) { // 11 == 1- hour(2) because 11 is 2 hours before 1 // CHECKED - WORKING FINE
-   int ans;
-    CircularInt result{other.get_low_bound(), other.get_upper_bound()};
-    result.set_current(num);
+//   int ans;
+//    CircularInt result{other.get_low_bound(), other.get_upper_bound()};
+//    result.set_current(num);
+//
+//    result -= other.get_current();
+//    return result;
+    CircularInt ans(other);
+    ans.set_current(num);
+    ans -= other.get_current();
+    return  ans;
 
-    result -= other.get_current();
-    return result;
 
 }
 
@@ -221,6 +251,71 @@ CircularInt operator*(const CircularInt &a, const CircularInt &b) {
     CircularInt ans(a);
     ans *= b.get_current();
     return ans;
+}
+
+CircularInt operator+(int num, const CircularInt &b) {
+    CircularInt res(b.get_low_bound(), b.get_upper_bound(), num);
+    res += b.get_current();
+    return res;
+}
+
+CircularInt operator/(int num, const CircularInt &b) {
+    CircularInt res(b.get_low_bound(), b.get_upper_bound(), num);    res /= b.get_current();
+    return res;
+}
+
+CircularInt operator*(int num, const CircularInt &b) {
+    CircularInt res(b.get_low_bound(), b.get_upper_bound(), num);    res *= b.get_current();
+    return res;
+}
+
+
+bool operator>=(int val, CircularInt &other) {
+    return val > other || val == other;
+}
+
+bool operator==(int val, CircularInt &other) {
+    return val == other.get_current();
+}
+
+bool operator!=(int val, CircularInt &other) {
+    return val != other.get_current();
+}
+
+bool operator<(int val, CircularInt &other) {
+    return val < other.get_current();
+}
+
+bool operator>(int val, CircularInt &other) {
+    return val > other.get_current();
+}
+
+bool operator<=(int val, CircularInt &other) {
+    return val < other || val == other;
+}
+
+bool operator==(CircularInt &current, int val) {
+    return current.get_current() == val;
+}
+
+bool operator!=(CircularInt &current, int val) {
+    return current.get_current() != val;
+}
+
+bool operator<(CircularInt &current, int val) {
+    return current.get_current() < val;
+}
+
+bool operator>(CircularInt &current, int val) {
+    return current.get_current() > val;
+}
+
+bool operator<=(CircularInt &current, int val) {
+    return current.get_current() < val || current.get_current() == val;
+}
+
+bool operator>=(CircularInt &current, int val) {
+    return current.get_current() > val || current.get_current() == val;
 }
 
 

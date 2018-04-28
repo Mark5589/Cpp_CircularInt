@@ -21,6 +21,7 @@ class CircularInt {
 
 public:
     CircularInt(int , int );
+    CircularInt(int , int , int );
     CircularInt(const CircularInt& other);
     int get_low_bound() const {return low_bound;}
     int get_upper_bound() const{ return  upper_bound;}
@@ -57,8 +58,10 @@ public:
     CircularInt operator++(int); // postfix
 
     CircularInt operator/(int num);
-    CircularInt& operator-();
+    CircularInt operator-();
     CircularInt operator*(int n);
+    CircularInt operator-(int n);
+    CircularInt operator+(int n);
 
 
     CircularInt operator-=(int);
@@ -76,12 +79,18 @@ public:
 
 };
 //This is non-member function because its have to deal with 3 members on unary/binary operator (compiling error)
-CircularInt operator-(int num, CircularInt  &other); //num-CircularInt // CHECKED - WORKING FINE //
-CircularInt operator+(const CircularInt& a ,const CircularInt&b); // CHECKED - WORKING FINE
+CircularInt operator-(int num, CircularInt  &other);                //num-CircularInt // CHECKED - WORKING FINE //
+CircularInt operator+(int num ,const CircularInt&b); // CHECKED - WORKING FINE
+CircularInt operator/(int num ,const CircularInt&b);
+CircularInt operator*(int num ,const CircularInt&b);
+
+
+
+CircularInt operator-(int num               ,CircularInt  &other);
+CircularInt operator+(const CircularInt& a ,const CircularInt&b);
 CircularInt operator-(const CircularInt& a ,const CircularInt&b);
 CircularInt operator/(const CircularInt& a ,const CircularInt&b);
 CircularInt operator*(const CircularInt& a ,const CircularInt&b);
-
 
  bool operator==( CircularInt &current ,  CircularInt&other);
  bool operator!=( CircularInt &current ,  CircularInt&other);
@@ -89,6 +98,20 @@ CircularInt operator*(const CircularInt& a ,const CircularInt&b);
  bool operator>( CircularInt &current ,  CircularInt&other);
  bool operator<=( CircularInt &current ,  CircularInt&other);
  bool operator>=( CircularInt &current ,  CircularInt&other);
+
+bool operator==( CircularInt &current , int val);
+bool operator!=( CircularInt &current , int val);
+bool operator<( CircularInt &current ,  int val);
+bool operator>( CircularInt &current ,  int val);
+bool operator<=( CircularInt &current , int val);
+bool operator>=( CircularInt &current , int val);
+//
+bool operator==(int val ,  CircularInt&other);
+bool operator!=(int val ,  CircularInt&other);
+bool operator<( int val,  CircularInt&other);
+bool operator>( int val,  CircularInt&other);
+bool operator<=(int val ,  CircularInt&other);
+bool operator>=(int val ,  CircularInt&other);
 
 
 
