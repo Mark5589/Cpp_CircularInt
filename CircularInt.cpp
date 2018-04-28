@@ -178,6 +178,37 @@ CircularInt::CircularInt(int low, int high, int curr) {
     this->current_num = curr;
 }
 
+CircularInt CircularInt::operator-=(const CircularInt &other) {
+    return (*this) -= other.get_current();
+}
+
+CircularInt &CircularInt::operator/=(const CircularInt &other) {
+    return (*this) /= other.get_current();
+}
+
+CircularInt &CircularInt::operator*=(const CircularInt &other) {
+    return (*this) *= other.get_current();
+}
+
+CircularInt &CircularInt::operator=(const CircularInt &other) {
+     (*this).upper_bound = other.get_upper_bound();
+    (*this).low_bound = other.get_low_bound();
+    (*this).current_num = other.get_current();
+    return (*this);
+
+}
+
+CircularInt CircularInt::operator--(int) {
+    CircularInt res(*this);
+    --(*this);
+    return res;
+}
+
+CircularInt &CircularInt::operator--() {
+    (*this) -= 1;
+    return (*this);
+}
+
 
 CircularInt operator-(int num, CircularInt  &other) { // 11 == 1- hour(2) because 11 is 2 hours before 1 // CHECKED - WORKING FINE
 //   int ans;

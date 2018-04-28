@@ -21,8 +21,13 @@ void test1(){
     cout <<"current hour is " <<hour << endl;
 
 //	cout << hour/2 << endl;
+    CircularInt c{1,12,5};
+//    cout << hour + 2 << en dl;
+    cout << hour + c << endl;
 
-    cout << hour + 2 << endl;
+    hour = c ;
+    cout << hour << endl;
+
 }
 
 //void test2(){

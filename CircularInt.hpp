@@ -57,6 +57,9 @@ public:
     CircularInt& operator++(); // prefix
     CircularInt operator++(int); // postfix
 
+    CircularInt& operator--(); // prefix
+    CircularInt operator--(int); // postfix
+
     CircularInt operator/(int num);
     CircularInt operator-();
     CircularInt operator*(int n);
@@ -68,6 +71,11 @@ public:
     CircularInt& operator/=(int);
     CircularInt&operator*=(int);
     CircularInt&operator=(int n);
+
+    CircularInt operator-=(const CircularInt& other);
+    CircularInt& operator/=(const CircularInt& other);
+    CircularInt&operator*=(const CircularInt& other);
+    CircularInt&operator=(const CircularInt& other);
 
     bool operator==(int val);
     bool operator!=(int val);
