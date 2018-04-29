@@ -88,14 +88,14 @@ public:
 
 };
 //This is non-member function because its have to deal with 3 members on unary/binary operator (compiling error)
-CircularInt operator-(int num, CircularInt  &other);                //num-CircularInt // CHECKED - WORKING FINE //
+CircularInt operator-(int num, const CircularInt &other);                //num-CircularInt // CHECKED - WORKING FINE //
 CircularInt operator+(int num ,const CircularInt&b); // CHECKED - WORKING FINE
 CircularInt operator/(int num ,const CircularInt&b);
 CircularInt operator*(int num ,const CircularInt&b);
 
 
 
-CircularInt operator-(int num               ,CircularInt  &other);
+//CircularInt operator-(int num               ,CircularInt  &other);
 CircularInt operator+(const CircularInt& a ,const CircularInt&b);
 CircularInt operator-(const CircularInt& a ,const CircularInt&b);
 CircularInt operator/(const CircularInt& a ,const CircularInt&b);

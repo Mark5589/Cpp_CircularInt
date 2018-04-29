@@ -215,7 +215,7 @@ CircularInt &CircularInt::operator+=(const CircularInt &other) {
 }
 
 
-CircularInt operator-(int num, CircularInt  &other) { // 11 == 1- hour(2) because 11 is 2 hours before 1 // CHECKED - WORKING FINE
+CircularInt operator-(int num,const CircularInt  &other) { // 11 == 1- hour(2) because 11 is 2 hours before 1 // CHECKED - WORKING FINE
 //   int ans;
 //    CircularInt result{other.get_low_bound(), other.get_upper_bound()};
 //    result.set_current(num);
