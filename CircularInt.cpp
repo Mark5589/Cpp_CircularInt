@@ -306,53 +306,53 @@ CircularInt operator*(int num, const CircularInt &b) {
 }
 
 
-friend bool operator>=(int val, CircularInt &other) {
+bool operator>=(int val, CircularInt &other) {
     return val > other || val == other;
 }
 
-friend bool operator==(int val, CircularInt &other) {
+bool operator==(int val, CircularInt &other) {
     return val == other.get_current();
 }
 
-friend bool operator!=(int val, CircularInt &other) {
+bool operator!=(int val, CircularInt &other) {
     return val != other.get_current();
 }
 
-friend bool operator<(int val, CircularInt &other) {
+bool operator<(int val, CircularInt &other) {
     return val < other.get_current();
 }
 
-friend bool operator>(int val, CircularInt &other) {
+bool operator>(int val, CircularInt &other) {
     return val > other.get_current();
 }
 
-friend bool operator<=(int val, CircularInt &other) {
+bool operator<=(int val, CircularInt &other) {
     return val < other || val == other;
 }
 
-friend bool operator==(CircularInt &current, int val) {
-    return current.get_current() == val;
-}
-
-friend bool operator!=(CircularInt &current, int val) {
-    return current.get_current() != val;
-}
-
-friend bool operator<(CircularInt &current, int val) {
-    return current.get_current() < val;
-}
-
-friend bool operator>(CircularInt &current, int val) {
-    return current.get_current() > val;
-}
-
-friend bool operator<=(CircularInt &current, int val) {
-    return current.get_current() < val || current.get_current() == val;
-}
-
-friend bool operator>=(CircularInt &current, int val) {
-    return current.get_current() > val || current.get_current() == val;
-}
+// bool operator==(CircularInt &current, int val) {
+//    return current.get_current() == val;
+//}
+//
+//inline bool operator!=(CircularInt &current, int val) {
+//    return current.get_current() != val;
+//}
+//
+//inline bool operator<(CircularInt &current, int val) {
+//    return current.get_current() < val;
+//}
+//
+//inline bool operator>(CircularInt &current, int val) {
+//    return current.get_current() > val;
+//}
+//
+//inline bool operator<=(CircularInt &current, int val) {
+//    return current.get_current() < val || current.get_current() == val;
+//}
+//
+//inline bool operator>=(CircularInt &current, int val) {
+//    return current.get_current() > val || current.get_current() == val;
+//}
 
 
 
