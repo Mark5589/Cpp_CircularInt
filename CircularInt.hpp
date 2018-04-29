@@ -101,12 +101,12 @@ CircularInt operator-(const CircularInt& a ,const CircularInt&b);
 CircularInt operator/(const CircularInt& a ,const CircularInt&b);
 CircularInt operator*(const CircularInt& a ,const CircularInt&b);
 
- bool operator==( CircularInt &current ,  CircularInt&other);
- bool operator!=( CircularInt &current ,  CircularInt&other);
- bool operator<( CircularInt &current ,  CircularInt&other);
- bool operator>( CircularInt &current ,  CircularInt&other);
- bool operator<=( CircularInt &current ,  CircularInt&other);
- bool operator>=( CircularInt &current ,  CircularInt&other);
+ bool operator==(const  CircularInt &current ,const  CircularInt&other);
+ bool operator!=(const  CircularInt &current ,const  CircularInt&other);
+ bool operator<( const CircularInt &current , const CircularInt&other);
+ bool operator>( const CircularInt &current , const CircularInt&other);
+ bool operator<=(const  CircularInt &current ,const  CircularInt&other);
+ bool operator>=(const  CircularInt &current ,const  CircularInt&other);
 
 //inline bool operator==( CircularInt &current , int val);
 //inline bool operator!=( CircularInt &current , int val);
@@ -115,12 +115,12 @@ CircularInt operator*(const CircularInt& a ,const CircularInt&b);
 //inline bool operator<=( CircularInt &current , int val);
 //inline bool operator>=( CircularInt &current , int val);
 //
-bool operator==(int val ,  CircularInt&other);
-bool operator!=(int val ,  CircularInt&other);
-bool operator<( int val,  CircularInt&other);
-bool operator>( int val,  CircularInt&other);
-bool operator<=(int val ,  CircularInt&other);
-bool operator>=(int val ,  CircularInt&other);
+bool operator==(int val , const  CircularInt&other);
+bool operator!=(int val , const  CircularInt&other);
+bool operator<( int val,  const CircularInt&other);
+bool operator>( int val,  const CircularInt&other);
+bool operator<=(int val , const  CircularInt&other);
+bool operator>=(int val , const  CircularInt&other);
 
 
 

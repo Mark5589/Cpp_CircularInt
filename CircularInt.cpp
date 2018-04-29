@@ -230,7 +230,7 @@ CircularInt operator-(int num,const CircularInt  &other) { // 11 == 1- hour(2) b
 
 }
 
- bool operator==( CircularInt &current,  CircularInt &other) {
+ bool operator==(const  CircularInt &current,const   CircularInt &other) {
     if((current).get_current() == other.get_current() &&
        (current).get_upper_bound() == other.get_upper_bound()&&
        (current).get_low_bound() == other.get_low_bound())
@@ -239,28 +239,28 @@ CircularInt operator-(int num,const CircularInt  &other) { // 11 == 1- hour(2) b
     return false;
 }
 
-bool operator!=(CircularInt &current, CircularInt &other) {
+bool operator!=(const CircularInt &current,const  CircularInt &other) {
     return !(current == other);
 }
 
-bool operator<(CircularInt &current, CircularInt &other) {
+bool operator<(const CircularInt &current,const  CircularInt &other) {
     if(current.get_low_bound() == other.get_low_bound() && current.get_upper_bound() == other.get_upper_bound() &&
             current.get_current() < other.get_current())return true;
 
     return false;
 }
 
-bool operator>(CircularInt &current, CircularInt &other) {
+bool operator>(const CircularInt &current,const  CircularInt &other) {
     if(current < other)return false;
     return true;
 }
 
-bool operator<=(CircularInt &current, CircularInt &other) {
+bool operator<=(const CircularInt &current,const  CircularInt &other) {
     if(current < other || current == other)return true;
     return false;
 }
 
-bool operator>=(CircularInt &current, CircularInt &other) {
+bool operator>=(const CircularInt &current,const  CircularInt &other) {
     if(current > other || current == other) return true;
     return false;
 }
@@ -306,27 +306,27 @@ CircularInt operator*(int num, const CircularInt &b) {
 }
 
 
-bool operator>=(int val, CircularInt &other) {
+bool operator>=(int val,const CircularInt &other) {
     return val > other || val == other;
 }
 
-bool operator==(int val, CircularInt &other) {
+bool operator==(int val,const  CircularInt &other) {
     return val == other.get_current();
 }
 
-bool operator!=(int val, CircularInt &other) {
+bool operator!=(int val,const  CircularInt &other) {
     return val != other.get_current();
 }
 
-bool operator<(int val, CircularInt &other) {
+bool operator<(int val,const  CircularInt &other) {
     return val < other.get_current();
 }
 
-bool operator>(int val, CircularInt &other) {
+bool operator>(int val,const  CircularInt &other) {
     return val > other.get_current();
 }
 
-bool operator<=(int val, CircularInt &other) {
+bool operator<=(int val,const  CircularInt &other) {
     return val < other || val == other;
 }
 
