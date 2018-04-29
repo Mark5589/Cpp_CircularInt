@@ -330,27 +330,27 @@ bool operator<=(int val, CircularInt &other) {
     return val < other || val == other;
 }
 
-bool operator==(CircularInt &current, int val) {
+inline bool operator==(CircularInt &current, int val) {
     return current.get_current() == val;
 }
 
-bool operator!=(CircularInt &current, int val) {
+inline bool operator!=(CircularInt &current, int val) {
     return current.get_current() != val;
 }
 
-bool operator<(CircularInt &current, int val) {
+inline bool operator<(CircularInt &current, int val) {
     return current.get_current() < val;
 }
 
-bool operator>(CircularInt &current, int val) {
+inline bool operator>(CircularInt &current, int val) {
     return current.get_current() > val;
 }
 
-bool operator<=(CircularInt &current, int val) {
+inline bool operator<=(CircularInt &current, int val) {
     return current.get_current() < val || current.get_current() == val;
 }
 
-bool operator>=(CircularInt &current, int val) {
+inline bool operator>=(CircularInt &current, int val) {
     return current.get_current() > val || current.get_current() == val;
 }
 
