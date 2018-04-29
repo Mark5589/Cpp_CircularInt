@@ -23,7 +23,7 @@ CircularInt::CircularInt(int lower, int upper){
 
 }
 
-CircularInt CircularInt::operator-=(int val) { // CHECKED - WORKING FINE
+CircularInt& CircularInt::operator-=(int val) { // CHECKED - WORKING FINE
     int ans;
     if(val >= this->get_current()){
         val = (val - this->get_current()) % this->get_range();
@@ -36,6 +36,7 @@ CircularInt CircularInt::operator-=(int val) { // CHECKED - WORKING FINE
     if(ans == 0 ) ans = get_upper_bound();
 
     this->set_current(ans);
+    return(*this);
 }
 
 CircularInt CircularInt::operator-() {  // CHECKED - WORKING FINE
@@ -178,7 +179,7 @@ CircularInt::CircularInt(int low, int high, int curr) {
     this->current_num = curr;
 }
 
-CircularInt CircularInt::operator-=(const CircularInt &other) {
+CircularInt& CircularInt::operator-=(const CircularInt &other) {
     return (*this) -= other.get_current();
 }
 
@@ -207,6 +208,10 @@ CircularInt CircularInt::operator--(int) {
 CircularInt &CircularInt::operator--() {
     (*this) -= 1;
     return (*this);
+}
+
+CircularInt &CircularInt::operator+=(const CircularInt &other) {
+    return (*this) += other.get_current();
 }
 
 

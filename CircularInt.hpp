@@ -67,12 +67,13 @@ public:
     CircularInt operator+(int n);
 
 
-    CircularInt operator-=(int);
+    CircularInt& operator-=(int);
     CircularInt& operator/=(int);
     CircularInt&operator*=(int);
     CircularInt&operator=(int n);
 
-    CircularInt operator-=(const CircularInt& other);
+    CircularInt& operator-=(const CircularInt& other);
+    CircularInt& operator+=(const CircularInt& other);
     CircularInt& operator/=(const CircularInt& other);
     CircularInt&operator*=(const CircularInt& other);
     CircularInt&operator=(const CircularInt& other);
